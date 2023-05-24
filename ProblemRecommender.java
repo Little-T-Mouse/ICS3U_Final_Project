@@ -3,18 +3,39 @@ import java.util.ArrayList;
 public class ProblemRecommender {
     private ArrayList<Problem> problems;
 
+    /**
+     * ProblemRecommender
+     * Empty constructor of ProblemRecommender
+     */
     public ProblemRecommender() {
 
     }
 
+    /**
+     * ProblemRecommender
+     * Constructor for ProblemRecommender
+     * @param problems the ArrayList of problems that we want to select similar problem from
+     */
     public ProblemRecommender(ArrayList<Problem> problems) {
         this.problems = problems;
     }
 
+    /**
+     * addProblem
+     * add function to the source list
+     * @param problem the problem we wish to add in to the possible recommend list
+     */
     public void addProblem(Problem problem) {
         problems.add(problem);
     }
 
+    /**
+     * getProblems
+     * Method that generate numOfProblem of problems based on the given curProblem.
+     * @param curProblem the problem that's used to find similar problem
+     * @param numOfProblem the number of similar problems we wish to find
+     * @return the ArrayList of relative problem
+     */
     public ArrayList<Problem> getProblems(Problem curProblem, int numOfProblem) {
         ArrayList<Problem> ret = new ArrayList<Problem>();
         int relativity[] = new int[problems.size()];
@@ -46,6 +67,13 @@ public class ProblemRecommender {
         return ret;
     }
 
+    /**
+     * similarity
+     * the method that compile the similarity between two content based on same characters
+     * @param content1 the first content we want to compare
+     * @param content2 the second content we want to compare
+     * @return the similarity between two content in terms of the relativity point, the method can provide up to 100 points if two paragraph match exactly
+     */
     public int similarity(String content1, String content2) {
         int ret = 0;
         int frq1[] = new int[26];
